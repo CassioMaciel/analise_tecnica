@@ -1,6 +1,7 @@
 import plotly.graph_objs as go
 import yfinance
-def constroi_grafico(acao, data_ini, data_final):
+from datetime import date
+def constroi_grafico(acao, data_ini, data_final=date.today()):
     cotacao = yfinance.download(acao,
                                start=data_ini,
                                end=data_final)

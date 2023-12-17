@@ -24,6 +24,8 @@ https://dash.plotly.com/dash-core-components/dropdown
 import plotly.graph_objs as go
 from dash import Dash, html, dcc, Input, Output, callback
 import bib_graficos
+from datetime import date, timedelta
+
 
 app = Dash(__name__)
 
@@ -101,7 +103,7 @@ def update_output(value):
     Input('lista_suspensa', 'value')
 )
 def update_grafico(value):
-    data = bib_graficos.constroi_grafico(value, '2016-10-1', '2019-1-1')
+    data = bib_graficos.constroi_grafico(value, date.today()-timedelta(days=730), date.today())
     fig = go.Figure(data=data)
     
     fig.update_layout(
